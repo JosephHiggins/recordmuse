@@ -1,0 +1,10 @@
+{
+    "com.isodevelopers.muse": {
+        "source": {
+            "type": "local",
+            "path": "museplugin"
+        },
+        "is_top_level": true,
+        "variables": {}
+    }
+}

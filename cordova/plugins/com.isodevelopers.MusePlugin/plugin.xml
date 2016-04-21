@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+        id="com.isodevelopers.MusePlugin" version="0.1.1">
+    <name>Muse</name>
+    <description>Muse Headset Plugin</description>
+    <license>Apache 2.0</license>
+    <keywords>muse</keywords>
+    <js-module src="www/muse.js" name="Muse">
+        <clobbers target="Muse" />
+    </js-module>
+    <platform name="android">
+  
+        <config-file target="res/xml/config.xml" parent="/*">
+          <feature name="MusePlugin">
+            <param name="android-package" value="com.isodevelopers.MusePlugin.MusePlugin" />
+            <!--<param name="onload" value="true" />-->
+          </feature>
+        </config-file>
+        
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+            <uses-feature android:name="android.hardware.bluetooth" />
+            <uses-permission android:name="android.permission.BLUETOOTH" />
+            <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+        </config-file>
+        
+        <source-file src="src/android/MusePlugin.java" target-dir="src/com/isodevelopers/MusePlugin" />
+        <source-file src="src/android/DataListener.java" target-dir="src/com/isodevelopers/MusePlugin" />
+        <source-file src="src/android/ConnectionListener.java" target-dir="src/com/isodevelopers/MusePlugin" />
+        <lib-file src="src/android/libmuseandroid.jar" target-dir="libs" />
+    </platform>
+</plugin>
