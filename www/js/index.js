@@ -17,6 +17,9 @@
  * under the License.
  */
 var app = {
+    data: [],
+    //clusterfck: require('clusterfck'),
+
     // Application Constructor
     initialize: function() {
         this.bindEvents();
@@ -69,6 +72,7 @@ var app = {
 
     processReadings: function(readings){
         readings = JSON.parse(readings);
+        app.data.push(readings); 
         if(readings[0].length==0){
             $('#logging').html('<p>The device is not reading from all four sensors. Please adjust the headset and wait. This can take up to a minute.</p>'); 
         } else {
@@ -93,6 +97,33 @@ var app = {
             avgs[j] /= reading.length;
         }
         $('#'+type).html('<strong>'+type+'</strong><br>TP9 '+avgs[0]+'<br>FP1: '+avgs[1]+'<br>FP2: '+avgs[2]+'<br>TP10: '+avgs[3]);
+    },
+
+    kmeans: function(){
+        var formatted = []; 
+        for(var i=0;i<app.data.length;i++){ // every refresh
+            var flattened = [[],[],[],[],[]];
+            for(var j=0;j<app.data[i].length; j++){ // five waves
+                for(var k=0;k<app.data[i][j].length; k++){ // each reading
+                    for(var l=0;l<app.data[i][j][k].length; l++){ // 4 sensors
+                        flattened[j].push(app.data[i][j][k][l]); 
+                    }
+                }
+            }
+            for(var j=0;j<flattened[0].length;j++){
+                formatted.push([flattened[0][i]]);
+                formatted.push([flattened[1][i]]);
+                formatted.push([flattened[2][i]]);
+                formatted.push([flattened[3][i]]);
+                formatted.push([flattened[4][i]]);
+            }
+        }
+
+        // [[wave1s1, wave1s2 ... wave5s4] ]
+        console.log(formatted);
+        //console.log(window.clusterfck.kmeans(formatted, 2));
+        app.data = [];  
+
     }
 
     

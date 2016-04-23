@@ -39,19 +39,19 @@ class DataListener extends MuseDataListener {
     @Override
     public void receiveMuseDataPacket(MuseDataPacket p) {
         switch (p.getPacketType()) {
-            case ALPHA_RELATIVE:
+            case ALPHA_ABSOLUTE:
                 saveReading(p.getValues(), alpha);
                 break;
-            case BETA_RELATIVE:
+            case BETA_ABSOLUTE:
                 saveReading(p.getValues(), beta);
                 break;
-            case DELTA_RELATIVE:
+            case DELTA_ABSOLUTE:
                 saveReading(p.getValues(), delta);
                 break;
-            case THETA_RELATIVE:
+            case THETA_ABSOLUTE:
                 saveReading(p.getValues(), theta);
                 break;
-            case GAMMA_RELATIVE:
+            case GAMMA_ABSOLUTE:
                 saveReading(p.getValues(), gamma);
                 break;
             default:

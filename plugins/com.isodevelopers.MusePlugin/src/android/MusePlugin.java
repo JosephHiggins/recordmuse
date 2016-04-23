@@ -97,11 +97,11 @@ public class MusePlugin extends CordovaPlugin {
             Log.i("Muse Headband", dev_id);
             muses += dev_id + "\n";
             m.registerConnectionListener(conn);
-            m.registerDataListener(data, MuseDataPacketType.ALPHA_RELATIVE);
-            m.registerDataListener(data, MuseDataPacketType.BETA_RELATIVE);
-            m.registerDataListener(data, MuseDataPacketType.DELTA_RELATIVE);
-            m.registerDataListener(data, MuseDataPacketType.THETA_RELATIVE);
-            m.registerDataListener(data, MuseDataPacketType.GAMMA_RELATIVE);
+            m.registerDataListener(data, MuseDataPacketType.ALPHA_ABSOLUTE);
+            m.registerDataListener(data, MuseDataPacketType.BETA_ABSOLUTE);
+            m.registerDataListener(data, MuseDataPacketType.DELTA_ABSOLUTE);
+            m.registerDataListener(data, MuseDataPacketType.THETA_ABSOLUTE);
+            m.registerDataListener(data, MuseDataPacketType.GAMMA_ABSOLUTE);
             m.setPreset(MusePreset.PRESET_14);
             m.enableDataTransmission(true);
             try {
