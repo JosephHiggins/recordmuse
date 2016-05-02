@@ -45,6 +45,9 @@
 
 <body>
     <div class="app">
+        <label for="clusterCount">Cluster count</label>
+        <input type="number" name="clusterCount" id="clusterCount" min="2" value="2" />
+        <input type="button" onclick="app.kmeans()" value="Kmeans cluster"/> 
         <h1>Muse Demo</h1>
         <div id="logging"></div>
     </div>

@@ -102,26 +102,20 @@ var app = {
     kmeans: function(){
         var formatted = []; 
         for(var i=0;i<app.data.length;i++){ // every refresh
-            var flattened = [[],[],[],[],[]];
-            for(var j=0;j<app.data[i].length; j++){ // five waves
-                for(var k=0;k<app.data[i][j].length; k++){ // each reading
-                    for(var l=0;l<app.data[i][j][k].length; l++){ // 4 sensors
-                        flattened[j].push(app.data[i][j][k][l]); 
-                    }
-                }
+            for(var j=0;j<app.data[i][0].length;j++){
+               var twentyBand = [];
+               twentyBand = twentyBand.concat(
+                    app.data[i][0][j],
+                    app.data[i][1][j],
+                    app.data[i][2][j],
+                    app.data[i][3][j],
+                    app.data[i][4][j]
+                );
+               formatted.push(twentyBand);
             }
-            for(var j=0;j<flattened[0].length;j++){
-                formatted.push([flattened[0][i]]);
-                formatted.push([flattened[1][i]]);
-                formatted.push([flattened[2][i]]);
-                formatted.push([flattened[3][i]]);
-                formatted.push([flattened[4][i]]);
-            }
+            
         }
-
-        // [[wave1s1, wave1s2 ... wave5s4] ]
-        console.log(formatted);
-        //console.log(window.clusterfck.kmeans(formatted, 2));
+        console.log(window.clusterfck.kmeans(formatted, parseInt($('#clusterCount').val())));
         app.data = [];  
 
     }
